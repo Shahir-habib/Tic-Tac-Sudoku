@@ -1,0 +1,103 @@
+body {
+    font-family: Calibri, sans-serif;
+    background: linear-gradient(pink, lightblue);
+}
+h1{
+    font-size: 2.5em;
+    color: #3b71c3;
+}
+
+p{
+    font-size: 23px;   
+    color: #504e75;
+    margin-bottom: 50px;
+}
+#container {
+    text-align: center
+}
+
+table {
+    border-collapse: collapse;
+    font-size: 2em;
+    margin: 0 auto;
+    color: #3b71c3;
+}
+
+colgroup,
+tbody {
+    border: solid medium;
+}
+
+td {
+    border: solid thin;
+    height: 1.4em;
+    width: 1.4em;
+    text-align: center;
+    padding: 0;
+}
+/*
+thick border for each 3x3 grid*/
+td:nth-child(3n) {
+    border-right: solid medium;
+}
+tr:nth-child(3n) td {
+    border-bottom: solid medium;
+}
+td.selected {
+    background-color: #f0f0f0;
+}
+td.highlight {
+    background-color: #f0f0f0;
+}
+button {
+    margin-top: 15px;
+    font-size: 1.5em;
+}
+
+padd {
+    padding-bottom: 100px;
+}
+.numbers {
+    font-size: 1.5em;
+    margin: 0 auto;
+    text-align: center;
+   
+}
+.numbers button {
+    margin: 10 5px;
+    padding: 5px 10px;
+    font-size: 1em;
+    border-radius: 50px;
+    border: none;
+    background-color: #369b32;
+    cursor: pointer;
+}
+.buttons{
+    margin-top: 20px;
+    font-size: 1.5em;
+    padding: 5px 10px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+#solve {
+    margin: 20px;
+    font-size: 1.5em;
+    padding: 5px 10px;
+    border-radius: 50px;
+    border: none;
+    background-color: #32739b;
+    cursor: pointer;
+    
+}
+#clear {
+    margin: 20px;
+    font-size: 1.5em;
+    padding: 5px 10px;
+    border-radius: 50px;
+    border: none;
+    background-color: #9b6832;
+    cursor: pointer;
+}

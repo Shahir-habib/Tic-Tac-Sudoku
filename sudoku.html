@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesudoku.css">
+    <title>Sudoku</title>
+</head>
+
+<body>
+    <h1>
+        Sudoku
+    </h1>
+    <hr>
+    <p>
+        Sudoku is a logic-based, combinatorial number-placement puzzle. The objective is to fill a 9×9 grid with digits
+        so that each column, each row, and each of the nine 3×3 subgrids that compose the grid contain all of the digits
+        from 1 to 9.
+        <br>Its Your Turn Now!
+    </p>
+
+    <div class="board">
+        <table id="sudoku-board">
+    
+            <tr>
+                <td id="0"></td>
+                <td id="1"></td>
+                <td id="2"></td>
+                <td id="3"></td>
+                <td id="4"></td>
+                <td id="5"></td>
+                <td id="6"></td>
+                <td id="7"></td>
+                <td id="8"></td>
+            </tr>
+            <tr>
+                <td id="9"></td>
+                <td id="10"></td>
+                <td id="11"></td>
+                <td id="12"></td>
+                <td id="13"></td>
+                <td id="14"></td>
+                <td id="15"></td>
+                <td id="16"></td>
+                <td id="17"></td>
+            </tr>
+            <tr>
+                <td id="18"></td>
+                <td id="19"></td>
+                <td id="20"></td>
+                <td id="21"></td>
+                <td id="22"></td>
+                <td id="23"></td>
+                <td id="24"></td>
+                <td id="25"></td>
+                <td id="26"></td>
+            </tr>
+            <tr>
+                <td id="27"></td>
+                <td id="28"></td>
+                <td id="29"></td>
+                <td id="30"></td>
+                <td id="31"></td>
+                <td id="32"></td>
+                <td id="33"></td>
+                <td id="34"></td>
+                <td id="35"></td>
+            </tr>
+            <tr>
+                <td id="36"></td>
+                <td id="37"></td>
+                <td id="38"></td>
+                <td id="39"></td>
+                <td id="40"></td>
+                <td id="41"></td>
+                <td id="42"></td>
+                <td id="43"></td>
+                <td id="44"></td>
+            </tr>
+            <tr>
+                <td id="45"></td>
+                <td id="46"></td>
+                <td id="47"></td>
+                <td id="48"></td>
+                <td id="49"></td>
+                <td id="50"></td>
+                <td id="51"></td>
+                <td id="52"></td>
+                <td id="53"></td>
+            </tr>
+            <tr>
+                <td id="54"></td>
+                <td id="55"></td>
+                <td id="56"></td>
+                <td id="57"></td>
+                <td id="58"></td>
+                <td id="59"></td>
+                <td id="60"></td>
+                <td id="61"></td>
+                <td id="62"></td>
+            </tr>
+            <tr>
+                <td id="63"></td>
+                <td id="64"></td>
+                <td id="65"></td>
+                <td id="66"></td>
+                <td id="67"></td>
+                <td id="68"></td>
+                <td id="69"></td>
+                <td id="70"></td>
+                <td id="71"></td>
+            </tr>
+            <tr>
+                <td id="72"></td>
+                <td id="73"></td>
+                <td id="74"></td>
+                <td id="75"></td>
+                <td id="76"></td>
+                <td id="77"></td>
+                <td id="78"></td>
+                <td id="79"></td>
+                <td id="80"></td>
+            </tr>
+
+        </table>
+    </div>
+
+    <div class="numbers">
+        <button class="number">1</button>
+        <button class="number">2</button>
+        <button class="number">3</button>
+        <button class="number">4</button>
+        <button class="number">5</button>
+        <button class="number">6</button>
+        <button class="number">7</button>
+        <button class="number">8</button>
+        <button class="number">9</button>
+    </div>
+    <div class="buttons">
+        <button id="solve" onclick="solveSudoku()">Solve</button>
+        <button id="clear" onclick="resetSudokuGrid()">Clear</button>
+    </div>
+    <script src="sudoku.js"></script>
+
+</body>
+
+</html>
