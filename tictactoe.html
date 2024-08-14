@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tictactoe.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        Tic Tac Toe
+    </h1>
+    <hr>
+    <p>
+        Tic Tac Toe is a two-player game where each player either places an X or an O on a 3x3 grid. The player who
+        succeeds in placing three of their marks in a horizontal, vertical, or diagonal row wins the game.
+        We have a Multiplayer version of the game as well as a Single Player version where you can play against the
+        computer.
+        Click on the grid to place your X or O.
+    </p>
+
+    <hr>
+    <h2 class="game-mode">Game Mode</h2>
+    <div class="game-mode">
+        <button id="multiplayer">Multiplayer</button>
+        <button id="singleplayer">Single Player</button>
+    </div>
+
+    <div id="tic-tac-toe-board">
+        <!-- Cells will be created here by JavaScript -->
+        <section>
+            <div class="game--container">
+                <div data-cell-index="0" class="cell"></div>
+                <div data-cell-index="1" class="cell"></div>
+                <div data-cell-index="2" class="cell"></div>
+                <div data-cell-index="3" class="cell"></div>
+                <div data-cell-index="4" class="cell"></div>
+                <div data-cell-index="5" class="cell"></div>
+                <div data-cell-index="6" class="cell"></div>
+                <div data-cell-index="7" class="cell"></div>
+                <div data-cell-index="8" class="cell"></div>
+            </div>
+            <h2 class="game--status"></h2>
+            <button id="reset">New Game</button>
+        </section>
+    </div>
+
+
+    <p id="status"></p>
+    <script src="tictactoe.js"></script>
+</body>
+
+</html>

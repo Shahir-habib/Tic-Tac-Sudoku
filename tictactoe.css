@@ -1,0 +1,70 @@
+#tic-tac-toe-board {
+    display: none;
+    /* Add your styling for the board here */
+}
+.cell {
+    display: inline-block;
+    border: 1px solid #ba3f3f;
+    text-align: center;
+    line-height: 50px;
+    font-size: 24px;
+}
+.cell:hover {
+    background-color: #59bf67;
+}
+.game-mode {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+}
+button {
+    padding: 10px 20px;
+    margin: auto 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid #1a1414;
+    background-color: #e08a8a;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient( 90deg,rgb(73, 73, 176), rgb(46, 201, 46));
+}
+p{
+    font-size: 1em;
+    text-align: center;
+    color: #ffffff;
+}
+section {
+    text-align: center;
+}
+
+.cell {
+    font-family: "Permanent Marker", cursive;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #ecd7ba;
+    cursor: pointer;
+    line-height: 100px;
+    font-size: 60px;
+}
+.cell.winner {
+    background-color: yellow; /* Highlight winning cells */
+}
+
+.game--container {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    width: 306px;
+    margin: 10px auto;
+    background-color: #628bb3;
+    color: #04c0b2;
+
+}
+
+.game--status {
+    font-size: 50px;
+    color: #1ed86c;
+    margin: 20px auto;
+}
