@@ -4,8 +4,8 @@ In this beautiful website we can play Tic Tac Toe as well as Sudoku
 
 ## Sudoku
 
-![Sudoku](./sudokupreview.png)
+![Sudoku](./pictures/sudokupreview.png)
 
 ## Tic Tac Toe
 
-![Tic Tac Toe](./tttpreview.png)
+![Tic Tac Toe](./pictures/tttpreview.png)
