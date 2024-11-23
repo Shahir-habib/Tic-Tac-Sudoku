@@ -231,6 +231,7 @@ function solveSudoku() {
 }
 document.querySelector('#easy').addEventListener('click', () => {
     fetch("https://youdosudoku.com/api/", {
+        mode : 'no-cors',
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -268,6 +269,7 @@ document.querySelector('#easy').addEventListener('click', () => {
 });
 document.querySelector('#medium').addEventListener('click', () => {
     fetch("https://youdosudoku.com/api/", {
+        mode : 'no-cors',
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -305,6 +307,7 @@ document.querySelector('#medium').addEventListener('click', () => {
 });
 document.querySelector('#hard').addEventListener('click', () => {
     fetch("https://youdosudoku.com/api/", {
+        mode : 'no-cors',
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
