@@ -1,4 +1,34 @@
 let selectedCell = null;//variable to hold current cell
+async function fetchSudoku() {
+    try {
+        const response = await fetch('https://sudoku-api.vercel.app/api/dosuku');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log("Fetched Sudoku Data:", data);
+        return data.newboard.grids[0].value; // Extract the Sudoku grid
+    } catch (error) {
+        console.error("Error fetching Sudoku data:", error);
+        return null;
+    }
+}
+function populateSudoku(grid) {
+    //console.log(grid);
+    const cells = document.querySelectorAll('#sudoku-board td');
+    cells.forEach((cell, index) => {
+        let r = Math.floor(index / 9);
+        let c = index % 9;
+        const number = grid[r][c];
+        // If the number is not 0, set it as the cell's text content
+        if (number !== 0) {
+            cell.textContent = number;
+        } else {
+            cell.textContent = '';
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // Function to handle cell clicks
@@ -229,117 +259,30 @@ function solveSudoku() {
         alert('No solution exists');
     }
 }
-document.querySelector('#easy').addEventListener('click', () => {
-    fetch("https://youdosudoku.com/api/", {
-        mode : 'no-cors',
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            difficulty: "easy", // "easy", "medium", or "hard" (defaults to "easy")
-            solution: true, // true or false (defaults to true)
-            array: false // true or false (defaults to false)
-        })
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json(); // Parse the JSON from the response
-        })
-        .then(data => {
-            // Extract the puzzle string
-            const puzzle = data.puzzle;
-            // Select all <td> elements in the Sudoku table
-            const cells = document.querySelectorAll('#sudoku-board td');
-
-            // Loop through each cell and set its text content based on the puzzle string
-            cells.forEach((cell, index) => {
-                const number = puzzle[index];
-                // If the number is not 0, set it as the cell's text content
-                if (number !== '0') {
-                    cell.textContent = number;
-                } else {
-                    cell.textContent = '';
-                }
-            });
-        })
-        .catch(error => {
-            console.error("Error fetching the puzzle:", error);
-        });
+document.querySelector('#hard').addEventListener('click', () => {
+    fetchSudoku().then(grid => {
+        if (grid) {
+            populateSudoku(grid);
+        } else {
+            alert('Failed to fetch Sudoku data');
+        }
+    });
 });
 document.querySelector('#medium').addEventListener('click', () => {
-    fetch("https://youdosudoku.com/api/", {
-        mode : 'no-cors',
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            difficulty: "medium", // "easy", "medium", or "hard" (defaults to "easy")
-            solution: true, // true or false (defaults to true)
-            array: false // true or false (defaults to false)
-        })
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json(); // Parse the JSON from the response
-        })
-        .then(data => {
-            // Extract the puzzle string
-            const puzzle = data.puzzle;
-            // Select all <td> elements in the Sudoku table
-            const cells = document.querySelectorAll('#sudoku-board td');
-
-            // Loop through each cell and set its text content based on the puzzle string
-            cells.forEach((cell, index) => {
-                const number = puzzle[index];
-                // If the number is not 0, set it as the cell's text content
-                if (number !== '0') {
-                    cell.textContent = number;
-                } else {
-                    cell.textContent = '';
-                }
-            });
-        })
-        .catch(error => {
-            console.error("Error fetching the puzzle:", error);
-        });
+    fetchSudoku().then(grid => {
+        if (grid) {
+            populateSudoku(grid);
+        } else {
+            alert('Failed to fetch Sudoku data');
+        }
+    });
 });
-document.querySelector('#hard').addEventListener('click', () => {
-    fetch("https://youdosudoku.com/api/", {
-        mode : 'no-cors',
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            difficulty: "hard", // "easy", "medium", or "hard" (defaults to "easy")
-            solution: true, // true or false (defaults to true)
-            array: false // true or false (defaults to false)
-        })
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json(); // Parse the JSON from the response
-        })
-        .then(data => {
-            // Extract the puzzle string
-            const puzzle = data.puzzle;
-            // Select all <td> elements in the Sudoku table
-            const cells = document.querySelectorAll('#sudoku-board td');
-
-            // Loop through each cell and set its text content based on the puzzle string
-            cells.forEach((cell, index) => {
-                const number = puzzle[index];
-                // If the number is not 0, set it as the cell's text content
-                if (number !== '0') {
-                    cell.textContent = number;
-                } else {
-                    cell.textContent = '';
-                }
-            });
-        })
-        .catch(error => {
-            console.error("Error fetching the puzzle:", error);
-        });
+document.querySelector('#easy').addEventListener('click', () => {
+    fetchSudoku().then(grid => {
+        if (grid) {
+            populateSudoku(grid);
+        } else {
+            alert('Failed to fetch Sudoku data');
+        }
+    });
 });
