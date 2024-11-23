@@ -1,5 +1,5 @@
+let selectedCell = null;//variable to hold current cell
 document.addEventListener('DOMContentLoaded', () => {
-    let selectedCell = null; // Variable to keep track of the currently selected cell
 
     // Function to handle cell clicks
     function handleCellClick(event) {
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Highlight the newly selected cell
         event.target.style.backgroundColor = 'lightblue';
-        
+
         // Update the selectedCell reference
         selectedCell = event.target;
     }
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const num = parseInt(event.target.textContent);
             const row = Math.floor(selectedCell.id / 9);
             const col = selectedCell.id % 9;
-            
+
             if (isValid(num, row, col)) {
                 selectedCell.textContent = num;
             } else {
@@ -67,8 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Check if a number can be placed in the cell
     function isValid(num, row, col) {
         return isValidInRow(num, row) &&
-               isValidInCol(num, col) &&
-               isValidInBox(num, row, col);
+            isValidInCol(num, col) &&
+            isValidInBox(num, row, col);
     }
 
     // Select all <td> elements inside the sudoku-board table
@@ -94,6 +94,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+    function handleKeyPress(event) {
+        if (selectedCell) {
+            console.log("helllo");
+            const key = event.key;
+            // Ensure the key is a digit between '1' and '9'
+            if (!isNaN(key) && key >= '1' && key <= '9') {
+                const num = parseInt(key, 10); // Parse the key as a number
+                const row = Math.floor(selectedCell.id / 9);
+                const col = selectedCell.id % 9;
+                if (isValid(num, row, col)) {
+                    selectedCell.textContent = num;
+                } else {
+                    alert('Invalid number for this cell!');
+                }
+            } else {
+                alert('Please enter a number between 1 and 9.');
+            }
+            // Prevent the default browser behavior for the keypress
+            event.preventDefault();
+        }
+    }
+    document.addEventListener('keydown', handleKeyPress);
 });
 
 function getSudokuGrid() {
@@ -116,8 +138,8 @@ function setSudokuGrid(grid) {
 
 function resetSudokuGrid() {
     const cells = document.querySelectorAll('#sudoku-board td');
-    for(let index = 0; index < cells.length; index++) {
-        cells[index].textContent =  '' ;
+    for (let index = 0; index < cells.length; index++) {
+        cells[index].textContent = '';
     };
 }
 
@@ -158,8 +180,8 @@ function isValidInBox(grid, row, col, num) {
 // Check if a number can be placed in the cell
 function isValid(grid, row, col, num) {
     return isValidInRow(grid, row, num) &&
-           isValidInCol(grid, col, num) &&
-           isValidInBox(grid, row, col, num);
+        isValidInCol(grid, col, num) &&
+        isValidInBox(grid, row, col, num);
 }
 
 // Find an empty cell (represented by 0)
@@ -207,4 +229,114 @@ function solveSudoku() {
         alert('No solution exists');
     }
 }
+document.querySelector('#easy').addEventListener('click', () => {
+    fetch("https://youdosudoku.com/api/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            difficulty: "easy", // "easy", "medium", or "hard" (defaults to "easy")
+            solution: true, // true or false (defaults to true)
+            array: false // true or false (defaults to false)
+        })
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json(); // Parse the JSON from the response
+        })
+        .then(data => {
+            // Extract the puzzle string
+            const puzzle = data.puzzle;
+            // Select all <td> elements in the Sudoku table
+            const cells = document.querySelectorAll('#sudoku-board td');
 
+            // Loop through each cell and set its text content based on the puzzle string
+            cells.forEach((cell, index) => {
+                const number = puzzle[index];
+                // If the number is not 0, set it as the cell's text content
+                if (number !== '0') {
+                    cell.textContent = number;
+                } else {
+                    cell.textContent = '';
+                }
+            });
+        })
+        .catch(error => {
+            console.error("Error fetching the puzzle:", error);
+        });
+});
+document.querySelector('#medium').addEventListener('click', () => {
+    fetch("https://youdosudoku.com/api/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            difficulty: "medium", // "easy", "medium", or "hard" (defaults to "easy")
+            solution: true, // true or false (defaults to true)
+            array: false // true or false (defaults to false)
+        })
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json(); // Parse the JSON from the response
+        })
+        .then(data => {
+            // Extract the puzzle string
+            const puzzle = data.puzzle;
+            // Select all <td> elements in the Sudoku table
+            const cells = document.querySelectorAll('#sudoku-board td');
+
+            // Loop through each cell and set its text content based on the puzzle string
+            cells.forEach((cell, index) => {
+                const number = puzzle[index];
+                // If the number is not 0, set it as the cell's text content
+                if (number !== '0') {
+                    cell.textContent = number;
+                } else {
+                    cell.textContent = '';
+                }
+            });
+        })
+        .catch(error => {
+            console.error("Error fetching the puzzle:", error);
+        });
+});
+document.querySelector('#hard').addEventListener('click', () => {
+    fetch("https://youdosudoku.com/api/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            difficulty: "hard", // "easy", "medium", or "hard" (defaults to "easy")
+            solution: true, // true or false (defaults to true)
+            array: false // true or false (defaults to false)
+        })
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json(); // Parse the JSON from the response
+        })
+        .then(data => {
+            // Extract the puzzle string
+            const puzzle = data.puzzle;
+            // Select all <td> elements in the Sudoku table
+            const cells = document.querySelectorAll('#sudoku-board td');
+
+            // Loop through each cell and set its text content based on the puzzle string
+            cells.forEach((cell, index) => {
+                const number = puzzle[index];
+                // If the number is not 0, set it as the cell's text content
+                if (number !== '0') {
+                    cell.textContent = number;
+                } else {
+                    cell.textContent = '';
+                }
+            });
+        })
+        .catch(error => {
+            console.error("Error fetching the puzzle:", error);
+        });
+});

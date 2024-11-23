@@ -101,3 +101,27 @@ padd {
     background-color: #9b6832;
     cursor: pointer;
 }
+
+.difficulty {
+    display: flex;
+    justify-content: center;
+    margin: 20px 20px;
+    color : #ffffff;
+    button {
+        padding: 10px 20px;
+        margin: 0 10px;
+        font-size: 1.2em;
+        cursor: pointer;
+        border: 1px solid #1a1414;
+        background-color: #e08a8a;
+    }
+}
+#easy{
+    background-color:  lightgreen;
+}
+#medium{
+    background-color:blue;
+}
+#hard{
+    background-color:  red;
+}
